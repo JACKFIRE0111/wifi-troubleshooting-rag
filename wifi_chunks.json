@@ -1,0 +1,134 @@
+[
+  {
+    "chunk_id": "section_001",
+    "section": "What was retained",
+    "pages": [
+      1
+    ],
+    "text": "1. What was retained • Wi-Fi adapter/control missing and WLAN AutoConfig issues • Wireless networks not appearing • Association and authentication failures • Intermittent disconnects and roaming problems • Post-update / post-sleep / post-resume wireless failures • Wi-Fi connected but network access fails: TCP/IP, DHCP, DNS, proxy, firewall • 802.1X / enterprise Wi-Fi authentication and certificate troubleshooting • Wireless diagnostics, logs, traces, and evidence collection • Selected Wi-Fi-specific legacy cases that illustrate common failure modes • Captive-portal Wi-Fi as a specialized modern scenario"
+  },
+  {
+    "chunk_id": "section_002",
+    "section": "What was removed",
+    "pages": [
+      1
+    ],
+    "text": "2. What was removed • Active Directory-only troubleshooting • Storage, virtualization, printing, performance, and unrelated Windows components • Large historical TCP/IP registry-reference material • General server administration material • Long packet-capture examples that are not needed for the first research prototype • Unrelated Windows client articles that only happen to contain the word 'network'"
+  },
+  {
+    "chunk_id": "section_003",
+    "section": "Core symptom taxonomy",
+    "pages": [
+      1
+    ],
+    "text": "3. Core symptom taxonomy"
+  },
+  {
+    "chunk_id": "section_004",
+    "section": "Baseline evidence collection",
+    "pages": [
+      1
+    ],
+    "text": "4. Baseline evidence collection The source explicitly recommends collecting baseline state and recording the reproduction time before disruptive actions such as resetting the network stack, deleting profiles, removing drivers, or restarting the device. • Exact date/time of each connection attempt or disconnect • Wireless adapter model, driver version, and driver date • Windows build and recent update history • Network name and authentication method • Whether the profile comes from Group Policy, MDM, or the user • Relevant WLAN-AutoConfig operational events • Whether the problem affects multiple clients; compare affected and unaffected devices before changing configuration"
+  },
+  {
+    "chunk_id": "section_005",
+    "section": "Standard wireless commands / reports",
+    "pages": [
+      1,
+      2
+    ],
+    "text": "5. Standard wireless commands / reports python not used here — run these from an elevated Windows Command Prompt: netsh wlan show drivers netsh wlan show interfaces netsh wlan show networks mode=bssid netsh wlan show profiles netsh wlan show wlanreport The source states that wlanreport generates an HTML report summarizing recent wireless sessions, disconnect reasons, adapter information, and related events. The mode=bssid network listing adds BSSID, signal strength, channel, and radio type, which can help identify band/channel/coverage problems."
+  },
+  {
+    "chunk_id": "section_006",
+    "section": "Windows Wi-Fi component model",
+    "pages": [
+      2
+    ],
+    "text": "6. Windows Wi-Fi component model • Windows Connection Manager (Wcmsvc): processes connection requests and coordinates connectivity across network interfaces. • WLAN AutoConfig (WlanSvc): scans for wireless networks and manages wireless profiles and connectivity. • Media Specific Module (MSM): manages connection security, association, and authentication state. • Native Wi-Fi stack: drivers and wireless APIs interacting with wireless miniports and WLAN AutoConfig. • Wireless miniport driver: communication layer between the Windows wireless stack and adapter hardware. • Security Manager (SecMgr): pre- and post-connection security operations. • Authentication Engine (AuthMgr): manages 802.1X authentication requests."
+  },
+  {
+    "chunk_id": "section_007",
+    "section": "Troubleshooting logic for RAG",
+    "pages": [
+      2
+    ],
+    "text": "7. Troubleshooting logic for RAG The source supports a symptom-first decision structure: Identify the observed symptom before selecting a troubleshooting procedure. Collect baseline evidence before making changes that may destroy evidence. Determine the connection stage: radio visibility → association → authentication → IP configuration → DNS/network access. Use the diagnostic evidence appropriate to that stage. For repeated disconnects, correlate client-side timing with AP/controller evidence when available. For post-update/resume problems, explicitly consider driver, firmware, BIOS, and power-state changes."
+  },
+  {
+    "chunk_id": "section_008",
+    "section": "802.1X / enterprise Wi-Fi authentication",
+    "pages": [
+      2
+    ],
+    "text": "8. 802.1X / enterprise Wi-Fi authentication The 802.1X section is especially useful for the research corpus because it provides concrete failure evidence rather than only generic 'try restarting' advice. • Check NPS event logs for the connection attempt and the connection request/network policy that matched. • Use the WLAN AutoConfig operational log for wireless adapter, profile, authentication, and failure information. • Certificate problems are a major class of 802.1X failures; examples in the source include invalid/expired certificates, chain verification failures, and revocation-check failures. • Use the CAPI2 event log for certificate-related troubleshooting; the source notes that it is not enabled by default. • For packet captures, the source describes EAPOL filtering on the client side and EAP filtering on the NPS side. • NPS audit logging can provide success/failure evidence; if logging is missing, inspect the NPS audit policy."
+  },
+  {
+    "chunk_id": "section_009",
+    "section": "802.1X evidence collection",
+    "pages": [
+      2,
+      3
+    ],
+    "text": "9. 802.1X evidence collection • Create a dedicated log directory such as C:\\MSLOG when following the source's collection procedure. • Collect client wireless/RAS logs and NPS-side evidence. • Use Microsoft's TSS NET_WLAN scenario for new wireless support cases where advanced collection is required. • For reproducible issues, the source describes collecting an ETW trace and converting it to text when needed. • Preserve the failure timestamp so events and traces can be correlated."
+  },
+  {
+    "chunk_id": "section_010",
+    "section": "Intermittent disconnects and roaming",
+    "pages": [
+      3
+    ],
+    "text": "10. Intermittent disconnects and roaming • Record the exact disconnect time. • Record network name, access point, and signal conditions. • Determine whether the device roamed immediately before the disconnect. • Use wireless report and ETW evidence to identify the connection-state transition. • When infrastructure logs are available, correlate client traces with AP/controller logs. • Do not form a causal theory solely from one event; the source explicitly recommends decoding the 802.11 reason value and tracing the event chain."
+  },
+  {
+    "chunk_id": "section_011",
+    "section": "Wi-Fi associated but Internet/network access fails",
+    "pages": [
+      3
+    ],
+    "text": "11. Wi-Fi associated but Internet/network access fails The source distinguishes successful Wi-Fi association from successful network access. Once association is confirmed, troubleshooting moves toward TCP/IP, DHCP, DNS, proxy, or firewall. • Check IP configuration. • Check routing information. • Check DNS configuration and resolution. • Consider proxy and firewall behavior. • For DNS failures, inspect whether DNS traffic is blocked, whether the configured DNS server is reachable, and whether local cache/Hosts-file behavior explains the result."
+  },
+  {
+    "chunk_id": "section_012",
+    "section": "Selected Wi-Fi-specific legacy cases",
+    "pages": [
+      3
+    ],
+    "text": "12. Selected Wi-Fi-specific legacy cases"
+  },
+  {
+    "chunk_id": "section_013",
+    "section": "Captive-portal Wi-Fi",
+    "pages": [
+      3
+    ],
+    "text": "13. Captive-portal Wi-Fi • The library contains a modern Windows Hello for Business case involving captive-portal Wi-Fi at hotels, airports, or conferences. • A key diagnostic comparison is whether sign-in fails on the captive-portal network but succeeds on an alternative connection such as a mobile hotspot or wired connection. • The source describes a characteristic delayed failure and relevant Event Viewer evidence. • This is best treated as a specialized scenario rather than a generic Wi-Fi connectivity case."
+  },
+  {
+    "chunk_id": "section_014",
+    "section": "Recommended RAG chunk structure",
+    "pages": [
+      3,
+      4
+    ],
+    "text": "14. Recommended RAG chunk structure For the research implementation, split this material by diagnostic unit rather than by arbitrary page length. • Chunk 001 — Symptom taxonomy / adapter missing • Chunk 002 — Networks not visible • Chunk 003 — Association/authentication failure • Chunk 004 — Disconnect/roaming • Chunk 005 — Post-update/resume • Chunk 006 — Wi-Fi associated but no network access • Chunk 007 — Baseline evidence and commands • Chunk 008 — WLAN component model • Chunk 009 — 802.1X certificate troubleshooting • Chunk 010 — 802.1X packet/log evidence • Chunk 011 — Wireless trace / ETW evidence • Chunk 012 — Selected legacy Wi-Fi cases • Chunk 013 — Captive-portal Wi-Fi"
+  },
+  {
+    "chunk_id": "section_015",
+    "section": "Source map",
+    "pages": [
+      4
+    ],
+    "text": "15. Source map • Original PDF: troubleshoot-windows-client.pdf • Core advanced wireless troubleshooting: pages 824–837 • 802.1X authentication troubleshooting: pages 782–791 • 802.1X data collection: pages 796–802 • Wireless-specific legacy articles: pages 811–822 • Captive-portal Wi-Fi: pages 1810–1814"
+  },
+  {
+    "chunk_id": "section_016",
+    "section": "Research-use note",
+    "pages": [
+      4,
+      5
+    ],
+    "text": "16. Research-use note Use this simplified document as the working corpus for the first RAG prototype. Keep the original 2,297-page PDF unchanged as the archival source. For evaluation, construct troubleshooting cases independently from the documentation rather than copying article titles or exact step sequences into the test questions. Symptom First diagnostic direction Useful evidence Wi-Fi control/adapter missing Check adapter presence/enabled state and WLAN AutoConfig (WlanSvc). Device Manager; WlanSvc; netsh wlan show drivers/interfaces; System events. Expected networks not visible Check radio state, WLAN AutoConfig, supported bands, and whether other clients see the network. netsh wlan show interfaces; netsh wlan show networks mode=bssid; WLAN-AutoConfig log. Connection/authentication fails Separate association failure from authentication failure; use 802.1X troubleshooting for enterprise authentication. Wireless report; WLAN-AutoConfig log; profile/policy; failure timestamp. Connection drops / roaming unreliable Record timing, AP, signal conditions, and roaming behavior; correlate client and infrastructure evidence. Wireless report; ETW trace; adapter/driver data; AP/controller logs. Problem begins after update/resume Compare driver, firmware, BIOS, Windows build/update history and power-state transition. Driver version/date; update history; firmware/BIOS; ETW trace. Wi-Fi associated but no network access Move from wireless-layer diagnosis to TCP/IP, DHCP, DNS, proxy, or firewall troubleshooting. IP configuration; route; DNS; connectivity evidence. Case Research-relevant takeaway Source Wireless device remains disabled after Airplane mode The source describes a Windows 8/8.1 case where wireless devices can remain disabled if Airplane mode is turned off before wireless devices finish initialization. The workaround is to explicitly re-enable the affected wireless device. Original source pages 822–823. Case Research-relevant takeaway Source Wireless adapter problem after sleep/hibernate The library contains older Intel wireless cases involving resume from sleep/hibernate and power-management settings. Original source pages 813–814. PEAP option missing The library contains a specific wireless-profile/PEAP configuration case involving EAP-related registry configuration. Original source pages 815–817. Wireless security alert The library contains a workgroup wireless case where certificate trust validation produces a Windows Security Alert during connection. Original source pages 818–819. Virtual WiFi/SoftAP failure The library contains an older hosted-network failure associated with wireless-adapter power-management settings. Original source pages 820–821."
+  }
+]

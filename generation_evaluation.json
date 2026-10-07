@@ -1,0 +1,72 @@
+[
+  {
+    "case_id": "WIFI-001",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.3333333333333333,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-002",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.4,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.3333333333333333
+  },
+  {
+    "case_id": "WIFI-003",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.14285714285714285,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-004",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.0,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-005",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.0,
+    "baseline_concepts": 0.5,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-006",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.0,
+    "baseline_concepts": 0.3333333333333333,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-007",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.16666666666666666,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-008",
+    "baseline_evidence": 0.0,
+    "rag_evidence": 0.2,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-009",
+    "baseline_evidence": 0.16666666666666666,
+    "rag_evidence": 0.5,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.0
+  },
+  {
+    "case_id": "WIFI-010",
+    "baseline_evidence": 0.1111111111111111,
+    "rag_evidence": 0.3333333333333333,
+    "baseline_concepts": 0.0,
+    "rag_concepts": 0.0
+  }
+]

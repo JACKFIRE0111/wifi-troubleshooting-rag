@@ -1,0 +1,426 @@
+{
+  "num_cases": 10,
+  "hit_at_1": 0.0,
+  "hit_at_3": 0.0,
+  "results": [
+    {
+      "case_id": "WIFI-001",
+      "user_problem": "My Windows laptop suddenly stopped showing any Wi-Fi networks. The Wi-Fi option is also missing from Windows Settings. Ethernet still works.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_005",
+          "section": "Standard wireless commands / reports",
+          "similarity": 0.4148118197919235
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.4079153700890411
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_004",
+          "section": "Baseline evidence collection",
+          "similarity": 0.3275051880309339
+        }
+      ],
+      "expected_evidence": [
+        "Wireless adapter presence and enabled state",
+        "WLAN AutoConfig (WlanSvc) service state",
+        "Device Manager status",
+        "netsh wlan show drivers",
+        "netsh wlan show interfaces",
+        "Relevant System events"
+      ],
+      "expected_concepts": [
+        "Missing Wi-Fi adapter/control",
+        "WlanSvc state",
+        "Adapter/driver evidence collection"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-002",
+      "user_problem": "My laptop has a Wi-Fi adapter, but Windows cannot connect to wireless networks. Device Manager shows the wireless adapter, but it appears to be disabled.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_005",
+          "section": "Standard wireless commands / reports",
+          "similarity": 0.4321462572093561
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_006",
+          "section": "Windows Wi-Fi component model",
+          "similarity": 0.41001567439607095
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.3313498690777108
+        }
+      ],
+      "expected_evidence": [
+        "Device Manager status",
+        "Wireless adapter enabled state",
+        "WLAN AutoConfig (WlanSvc) service state",
+        "netsh wlan show drivers",
+        "netsh wlan show interfaces"
+      ],
+      "expected_concepts": [
+        "Adapter present but disabled",
+        "WlanSvc",
+        "Adapter state verification"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-003",
+      "user_problem": "My laptop can see several Wi-Fi networks, but the Wi-Fi network I normally use does not appear in the available network list. My phone can see the network.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.47980806252798847
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_005",
+          "section": "Standard wireless commands / reports",
+          "similarity": 0.423312186966854
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_013",
+          "section": "Captive-portal Wi-Fi",
+          "similarity": 0.3418342721961554
+        }
+      ],
+      "expected_evidence": [
+        "Hardware/software radio state",
+        "WLAN AutoConfig service state",
+        "Supported wireless bands",
+        "Whether other clients can see the same network",
+        "netsh wlan show interfaces",
+        "netsh wlan show networks mode=bssid",
+        "WLAN AutoConfig operational log"
+      ],
+      "expected_concepts": [
+        "Expected network not displayed",
+        "Band/channel/coverage investigation",
+        "Compare affected and unaffected clients"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-004",
+      "user_problem": "My laptop sees my Wi-Fi network, but every attempt to connect fails. I have confirmed that the network password is correct. Other devices can connect to the same network.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.5446255185040546
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_008",
+          "section": "802.1X / enterprise Wi-Fi authentication",
+          "similarity": 0.4576965266822184
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_013",
+          "section": "Captive-portal Wi-Fi",
+          "similarity": 0.4510922874431993
+        }
+      ],
+      "expected_evidence": [
+        "Wireless network report",
+        "WLAN AutoConfig operational log",
+        "Wireless profile/policy details",
+        "Failure timestamp",
+        "Whether failure occurs during association or authentication"
+      ],
+      "expected_concepts": [
+        "Connection failure",
+        "Association vs authentication distinction",
+        "Evidence-first troubleshooting"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-005",
+      "user_problem": "I can see the company Wi-Fi network, but my Windows laptop repeatedly fails during authentication. The same credentials work for other company services.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_013",
+          "section": "Captive-portal Wi-Fi",
+          "similarity": 0.5072224321155386
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.492100931063037
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_008",
+          "section": "802.1X / enterprise Wi-Fi authentication",
+          "similarity": 0.48368540344648675
+        }
+      ],
+      "expected_evidence": [
+        "Wireless network report",
+        "WLAN AutoConfig operational log",
+        "Authentication/profile/policy details",
+        "NPS Security event log",
+        "NPS event IDs 6272/6273 when applicable",
+        "Certificate validity when certificate-based authentication is used",
+        "CAPI2 events when certificate problems are suspected"
+      ],
+      "expected_concepts": [
+        "802.1X authentication",
+        "NPS evidence",
+        "Certificate validity/trust",
+        "EAP method"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-006",
+      "user_problem": "My laptop connects to Wi-Fi normally, but the connection drops every few minutes and then reconnects. Other devices on the same network do not have this problem.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.4842763737517446
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_010",
+          "section": "Intermittent disconnects and roaming",
+          "similarity": 0.4444466122306079
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_004",
+          "section": "Baseline evidence collection",
+          "similarity": 0.42544913622274894
+        }
+      ],
+      "expected_evidence": [
+        "Disconnect time",
+        "Network name",
+        "Access point",
+        "Signal conditions",
+        "Whether roaming occurred before disconnect",
+        "Wireless network report",
+        "ETW trace",
+        "Adapter and driver details",
+        "Infrastructure logs when available"
+      ],
+      "expected_concepts": [
+        "Intermittent disconnect",
+        "Roaming analysis",
+        "Client/infrastructure correlation"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [
+        "Intermittent disconnect"
+      ],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-007",
+      "user_problem": "My Wi-Fi worked normally before a recent Windows update. Since the update, the wireless connection has become unreliable. Restarting the laptop did not solve the issue.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.5455036798363394
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_005",
+          "section": "Standard wireless commands / reports",
+          "similarity": 0.36253613321529954
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_004",
+          "section": "Baseline evidence collection",
+          "similarity": 0.35315602212204783
+        }
+      ],
+      "expected_evidence": [
+        "Windows Update history",
+        "Current driver version and date",
+        "Firmware version",
+        "BIOS version",
+        "Relevant ETW trace",
+        "Record of recent Windows/driver/firmware changes"
+      ],
+      "expected_concepts": [
+        "Update-related regression investigation",
+        "Driver/firmware/BIOS comparison",
+        "Change correlation"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-008",
+      "user_problem": "My Wi-Fi connection is unreliable after my laptop wakes from sleep. Before putting the laptop to sleep, the connection works normally.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.4774979662773713
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_013",
+          "section": "Captive-portal Wi-Fi",
+          "similarity": 0.43177666451492536
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_004",
+          "section": "Baseline evidence collection",
+          "similarity": 0.4221578603980521
+        }
+      ],
+      "expected_evidence": [
+        "Power-state transition",
+        "Driver version",
+        "Firmware/BIOS information",
+        "ETW trace",
+        "Whether the behavior reproduces after resume"
+      ],
+      "expected_concepts": [
+        "Sleep/resume-related Wi-Fi issue",
+        "Power-state transition",
+        "Driver/firmware investigation"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-009",
+      "user_problem": "My Windows laptop connects successfully to my home Wi-Fi and shows that it is connected, but websites and other Internet applications do not work. Other devices on the same Wi-Fi can access the Internet normally.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.6058306042288305
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_013",
+          "section": "Captive-portal Wi-Fi",
+          "similarity": 0.41153132219536837
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_005",
+          "section": "Standard wireless commands / reports",
+          "similarity": 0.364508793611668
+        }
+      ],
+      "expected_evidence": [
+        "IP configuration",
+        "DHCP behavior",
+        "DNS behavior",
+        "Proxy settings",
+        "Network connectivity evidence",
+        "IP address"
+      ],
+      "expected_concepts": [
+        "Wi-Fi association succeeded",
+        "Network access failure",
+        "TCP/IP/DHCP/DNS/proxy troubleshooting"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    },
+    {
+      "case_id": "WIFI-010",
+      "user_problem": "My laptop connects to the enterprise Wi-Fi only intermittently. Sometimes authentication succeeds, but at other times it fails. I need to determine whether the problem is related to the wireless profile, authentication process, certificate, or network infrastructure.",
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "section_008",
+          "section": "802.1X / enterprise Wi-Fi authentication",
+          "similarity": 0.6416662063845738
+        },
+        {
+          "rank": 2,
+          "chunk_id": "section_010",
+          "section": "Intermittent disconnects and roaming",
+          "similarity": 0.6164089860048445
+        },
+        {
+          "rank": 3,
+          "chunk_id": "section_011",
+          "section": "Wi-Fi associated but Internet/network access fails",
+          "similarity": 0.5675794317685955
+        }
+      ],
+      "expected_evidence": [
+        "Failure timestamps",
+        "WLAN AutoConfig operational log",
+        "Wireless profile and authentication policy",
+        "NPS Security event log",
+        "Reason Code for rejected authentication when applicable",
+        "EAP method",
+        "Certificate validity/chain/revocation evidence when applicable",
+        "Client/server packet capture when advanced analysis is necessary",
+        "ETW wireless trace when available"
+      ],
+      "expected_concepts": [
+        "802.1X authentication flow",
+        "Client-side vs NPS-side evidence",
+        "Certificate-related authentication failure",
+        "Advanced evidence collection"
+      ],
+      "evidence_matches": [],
+      "concept_matches": [],
+      "hit_at_1": false,
+      "hit_at_3": false
+    }
+  ]
+}
